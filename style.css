@@ -1,0 +1,200 @@
+body {
+    background-color: rgb(197, 210, 213);
+}
+
+
+/* Conteneur pour centrer les boutons */
+.button-container {
+  display: flex;
+  flex-direction: column; /* Alignement vertical pour les petits écrans */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+  height: 100vh;
+  text-align: center; /* Pour assurer l'alignement du texte */
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  margin: auto;
+  flex-direction: column; /* Assure une seule carte par ligne */
+}
+
+/* Style de base pour les cartes */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 22px;
+  padding: 50px;
+  margin: 20px;
+  color: #000;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Occuper 80% de la largeur du conteneur parent */
+  max-width: 800px; /* Limite maximale de la largeur de la carte */
+}
+
+.audio-ctrl {
+  display: inline-block;
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-day {
+  background-color: #e6ebd1;
+}
+
+.card-sleep {
+  background-color: #1B1A55;
+  color: white;
+}
+
+.card-night {
+  background-color: #f9b29e;
+  color: #0f0404;
+}
+
+.switch {
+  position: relative;
+  height: 40px;
+  width: 360px;
+  margin: 60px auto 20px; /* Ajouter de la marge en haut pour éviter le chevauchement avec le logo */
+  background: #D7D7D7;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.switch-label {
+  font-weight: bold;
+  z-index: 2;
+  width: 120px;
+  line-height: 40px;
+  font-size: 20px;
+  color: #676a6c;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch-input {
+  display: none;
+}
+
+.switch-input:checked + .switch-label {
+  color: #000000;
+  transition: 0.15s ease-out;
+}
+
+.switch-input:checked + .switch-label ~ .switch-selector {
+  background-color: #e6ebd1;
+}
+
+.switch-selector {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 120px;
+  height: 40px;
+  border-radius: 40px;
+  background-color: #1ab394;
+  transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.switch-input:checked + .switch-label-y ~ .switch-selector {
+  transform: translateX(0%);
+  background-color: #e6ebd1;
+}
+
+.switch-input:checked + .switch-label-i ~ .switch-selector {
+  transform: translateX(100%);
+  background-color: #E1AE4F;
+}
+
+.switch-input:checked + .switch-label-n ~ .switch-selector {
+  transform: translateX(200%);
+  background-color: #29149f51;
+}
+
+.switch-selector:hover {
+  background-color: #ddd;
+}
+
+.logo {
+  text-align: center;
+  height: 10rem;
+  margin-top: 20px;
+}
+
+#greeting {
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .switch {
+      width: 100%;
+      max-width: 360px;
+      height: 60px;
+  }
+
+  .switch-label {
+      width: calc(100% / 3);
+      font-size: 18px;
+      line-height: 60px;
+  }
+
+  .switch-selector {
+      width: calc(100% / 3);
+      height: 60px;
+  }
+
+  .card {
+      width: 90%; /* Réduire la largeur des cartes sur les petits écrans */
+      padding: 30px;
+  }
+
+  .button-container {
+      height: auto;
+      padding: 20px;
+  }
+}
+
+.audio-ctrl {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .audio-ctrl {
+      width: 100%;
+      height: 50px; /* Augmentez la hauteur pour rendre les contrôles plus grands */
+  }
+}
+
+/* Styles additionnels pour améliorer la visibilité des contrôles */
+.audio-ctrl::-webkit-media-controls-panel {
+  background-color: #f9f9f9; /* Change la couleur de fond des contrôles */
+}
+
+.audio-ctrl::-webkit-media-controls-play-button,
+.audio-ctrl::-webkit-media-controls-volume-slider,
+ {
+  height: 40px; /* Augmentez la taille des boutons de lecture, volume et timeline */
+}
+
+.audio-ctrl::-webkit-media-controls-current-time-display,
+.audio-ctrl::-webkit-media-controls-time-remaining-display {
+  font-size: 16px; /* Augmentez la taille de la police pour les affichages de temps */
+}
